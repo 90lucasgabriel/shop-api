@@ -13,9 +13,11 @@ class ChangeOauthAccessTokenTable extends Migration
      */
     public function up()
     {
+        
         Schema::table('oauth_access_tokens', function (Blueprint $table) {
             $table->string('client_id', 170)->change();
         });
+        
     }
 
     /**
@@ -25,8 +27,10 @@ class ChangeOauthAccessTokenTable extends Migration
      */
     public function down()
     {
+        /*
         Schema::table('oauth_access_tokens', function (Blueprint $table) {
             $table->integer('client_id');
         });
+        */
     }
 }

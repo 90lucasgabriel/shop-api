@@ -25,8 +25,10 @@ class ChangeOauthAuthCodesTable extends Migration
      */
     public function down()
     {
+        /*
         Schema::table('oauth_auth_codes', function (Blueprint $table) {
             $table->integer('client_id')->change();
         });
+        */
     }
 }

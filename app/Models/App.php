@@ -14,7 +14,7 @@ class User extends Authenticatable implements Transformable
     use HasApiTokens, Notifiable, TransformableTrait;
 
     protected $table = 'users';
-    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'remember_token', 'provider', 'id_provider'];
+    protected $fillable = ['name', 'email', 'password', 'remember_token'];
     protected $hidden = ['password', 'remember_token'];
 
     public function client(){

@@ -25,8 +25,10 @@ class ChangeOauthPersonalAccessClientsTable extends Migration
      */
     public function down()
     {
+        /*
         Schema::table('oauth_personal_access_clients', function (Blueprint $table) {
             $table->integer('client_id')->index()->change();
         });
+        */
     }
 }

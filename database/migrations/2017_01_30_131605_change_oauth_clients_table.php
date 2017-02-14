@@ -26,9 +26,11 @@ class ChangeOauthClientsTable extends Migration
      */
     public function down()
     {
+        /*
         OauthClient::truncate();
         Schema::table('oauth_clients', function (Blueprint $table) {
             $table->increments('id')->change();
         });
+        */
     }
 }

@@ -22,8 +22,15 @@ class ChangeUsersTable extends Migration
             $table->string('email', 170)->change();
             $table->string('role')->default('client');
 
-            $table->string('provider')->nullable();
-            $table->string('provider_id', 150)->unique()->nullable();
+            $table->string('social')->nullable()->default('local');
+            $table->string('id_social', 170)->unique()->nullable();
+
+            /*
+            $table->integer('social')->unsigned()->default(0);
+            $table->string('id_social', 170)->nullable();
+
+            $table->foreign('social')->references('id')->on('socials')->onDelete('cascade');
+            */
         });
     }
 
@@ -34,6 +41,7 @@ class ChangeUsersTable extends Migration
      */
     public function down()
     {
+        /*
         Schema::table('users', function (Blueprint $table) {
             $table->string('name');
             $table->string('email')->change();
@@ -42,8 +50,9 @@ class ChangeUsersTable extends Migration
             $table->dropColumn('last_name');            
             $table->dropColumn('role');
 
-            $table->dropColumn('provider');
-            $table->dropColumn('provider_id');
+            $table->dropColumn('social');
+            $table->dropColumn('id_social');
         });
+        */
     }
 }

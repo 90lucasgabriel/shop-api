@@ -42,9 +42,9 @@ class OauthClientRepositoryEloquent extends BaseRepository implements OauthClien
     public function save($data){
         $name         = $data["name"];
 
-        $code         = md5($name.uniqid(rand(), true));
-        $id           = base64_encode(hash_hmac('sha256', $code, 'nameApplication', true));
-        $secret       = base64_encode(hash_hmac('sha256', $code, 'secretApplication', true));
+        $code         = md5($name . uniqid(rand(), true));
+        $id           = md5($code . 'NameApplication' . uniqid(rand(), true));
+        $secret       = md5($code . 'SecretApplication' . uniqid(rand(), true));
 
         $oauthClient  = OauthClient::create([
             'id'                     => $id,

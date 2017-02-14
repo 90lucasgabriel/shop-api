@@ -10,7 +10,9 @@ class OauthClientTableSeeder extends Seeder
         //DB::statement('TRUNCATE oauth_clients CASCADE');
         OauthClient::truncate();
         factory(OauthClient::class)->create([
-            "name"	=>"Application"
+            "id"    => "d24d6167e707c17d32d2776d77822aaa",
+            "name"  => "Application",
+            "secret"=> "a12fd0b68d342918910b8750650d6dce"
         ]);
         //factory(OauthClient::class, 10)->create();   
     }

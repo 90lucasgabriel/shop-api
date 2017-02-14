@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'cors'], function(){
 
+		//Route::post('/oauth/token', ['as' => 'oauth.token',	'uses' => 'AccessTokenController@issueToken'])->middleware('checkLogin', 'throttle');
 		Route::group(['prefix' => 'client', 'as' => 'client.'], function(){
 			Route::resource('orders', 'Api\ClientCheckoutController', ['except' => ['create', 'edit', 'destroy']]);
 			
@@ -37,6 +38,7 @@ Route::group(['middleware' => 'cors'], function(){
 		});
 
 		Route::group(['prefix' => 'users', 'as' => 'users.'], function(){
+			Route::get('find-by-token/{social}/{token}',['as' => 'find-by-token',   'uses' => 'Api\UsersController@findByToken']);
 			Route::get('authenticated', 				['as' => 'authenticated', 	'uses' => 'Api\UsersController@authenticated']);
 			Route::patch('device-token', 				['as' => 'device-token', 	'uses' => 'Api\UsersController@updateDeviceToken']);
 			Route::post('/', 							['as' => 'index', 			'uses' => 'Api\UsersController@create']);
