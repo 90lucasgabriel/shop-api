@@ -8,7 +8,7 @@ class UserTableSeeder extends Seeder
 {
     public function run()
     {
-        //DB::statement('TRUNCATE users CASCADE');
+        // DB::statement('TRUNCATE users CASCADE');
         User::truncate();
         factory(User::class)->create([
             'first_name'     => 'Teixeira',
