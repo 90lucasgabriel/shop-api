@@ -18,6 +18,16 @@ class UsersController extends Controller{
         $this->userRepository   = $userRepository;
     }
 
+
+    public function index(){
+        $users = $this
+            ->userRepository
+            ->skipPresenter(false)
+            ->paginate(100);
+
+        return $users;
+    }
+
     public function create(Request $request){
         $data                   = $request->all();
 
