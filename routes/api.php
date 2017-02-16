@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'cors'], function(){
 
-		//Route::post('/oauth/token', ['as' => 'oauth.token',	'uses' => 'AccessTokenController@issueToken'])->middleware('checkLogin', 'throttle');
+		Route::post('/oauth/token', ['as' => 'oauth.token',	'uses' => '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken'])->middleware('checkLogin', 'throttle');		
 		Route::group(['prefix' => 'client', 'as' => 'client.'], function(){
 			Route::resource('orders', 'Api\ClientCheckoutController', ['except' => ['create', 'edit', 'destroy']]);
 			

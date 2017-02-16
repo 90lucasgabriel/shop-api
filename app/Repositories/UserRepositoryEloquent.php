@@ -63,7 +63,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         
         if($result){
             return $this->parserResult($result);
-        }/*
+        }
         else{
             $data = [
                 "first_name" => $user->name,
@@ -79,7 +79,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
 
             return $data;
         }
-        */
+        
         throw (new ModelNotFoundException())->setModel(get_class($this->model));
         
     }

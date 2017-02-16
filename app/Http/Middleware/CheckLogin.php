@@ -20,6 +20,7 @@ class CheckLogin
         $request_array = $request->all();
         $secret        = 'SecretPasswordSocial!';
 
+        
         //Verifica se é login local ou por rede social
         if($request->social != null && $request->social != "local"){
             //É necessário um token da API da rede social requisitada pelo front-end

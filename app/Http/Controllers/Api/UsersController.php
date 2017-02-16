@@ -31,6 +31,10 @@ class UsersController extends Controller{
     public function create(Request $request){
         $data                   = $request->all();
 
+        if(!isset($data["email"]) || $data["email"] == null){
+            $data["email"] = $data["username"];
+        }
+        
         $data["password"]       = bcrypt($data["password"]);        
         $data["remember_token"] = str_random(10);
 
