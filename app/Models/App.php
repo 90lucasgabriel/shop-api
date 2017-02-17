@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace App\Models;
 
 use Laravel\Passport\HasApiTokens;
@@ -21,3 +21,4 @@ class User extends Authenticatable implements Transformable
         return $this->hasOne(Client::class);
     }
 }
+*/

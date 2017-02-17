@@ -29,16 +29,29 @@ class UsersController extends Controller{
     }
 
     public function create(Request $request){
-        $data                   = $request->all();
+        if($request->social != null && $request->social != "local")
+        {
+            $secret = 'SecretPasswordSocial!';
+            $user   = $this->findByToken($request->social, $request->token_social);
 
-        if(!isset($data["email"]) || $data["email"] == null){
-            $data["email"] = $data["username"];
+            $user["social"]         = $request->social;
+            $user["password"]       = bcrypt(md5($request->social . $user["email"] . $secret));
+            $user["remember_token"] = str_random(10);
+
+            return $this->userRepository->create($user);
         }
-        
-        $data["password"]       = bcrypt($data["password"]);        
-        $data["remember_token"] = str_random(10);
+        else
+        {
+            $data                   = $request->all();
+            if(!isset($data["email"]) || $data["email"] == null){
+                $data["email"] = $data["username"];
+            }
+            
+            $data["password"]       = bcrypt($data["password"]);        
+            $data["remember_token"] = str_random(10);
+            return $this->userRepository->create($data);
+        }   
 
-        return $this->userRepository->create($data);
     }
 
     public function login(Request $request){

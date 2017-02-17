@@ -17,10 +17,10 @@ class CheckLogin
      */
     public function handle($request, Closure $next)
     {
-        $request_array = $request->all();
+        $data          = $request->all();
         $secret        = 'SecretPasswordSocial!';
 
-        
+
         //Verifica se é login local ou por rede social
         if($request->social != null && $request->social != "local"){
             //É necessário um token da API da rede social requisitada pelo front-end
@@ -30,12 +30,12 @@ class CheckLogin
                 
                 //Compara o e-mail da requisição com o do token encontrado
                 if($user->email === $request->username){
-                    $request_array['password'] = md5($request->social . $request->username . $secret);
+                    $data['password'] = md5($request->social . $request->username . $secret);
                 }
             }
         }
         
-        $request->replace($request_array);
+        $request->replace($data);
 
         return $next($request);
     }

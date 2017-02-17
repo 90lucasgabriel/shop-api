@@ -66,16 +66,17 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         }
         else{
             $data = [
-                "first_name" => $user->name,
-                "last_name"  => "",
-                "email"      => $user->email,
-                "picture"    => $user->avatar,
-                "id_social"  => $user->id,
-                "token"      => $user->token,
-                "register"   => true
+                "first_name"   => $user->name,
+                "last_name"    => null,
+                "email"        => $user->email,
+                "username"     => $user->email,
+                "picture"      => $user->avatar,
+                "id_social"    => $user->id,
+                "token_social" => $user->token,
+                "register"     => true
             ];
 
-            $data = ["data" => $data];
+            //$data = ["data" => $data];
 
             return $data;
         }
