@@ -53,7 +53,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         return $this->parserResult($model);
     }
 
-    public function findByToken($social, $token){
+    public function findLocalByToken($social, $token){
         $user = Socialite::driver($social)->userFromToken($token);
         
         $result = $this
@@ -64,7 +64,16 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         if($result){
             return $this->parserResult($result);
         }
-        else{
+        
+        
+        throw (new ModelNotFoundException())->setModel(get_class($this->model));
+        
+    }
+
+    public function findSocialByToken(){
+        $user = Socialite::driver($social)->userFromToken($token);
+
+        if($user){
             $data = [
                 "first_name"   => $user->name,
                 "last_name"    => null,
@@ -80,8 +89,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
 
             return $data;
         }
-        
+    
         throw (new ModelNotFoundException())->setModel(get_class($this->model));
-        
     }
 }

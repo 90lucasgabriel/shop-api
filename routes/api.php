@@ -38,7 +38,8 @@ Route::group(['middleware' => 'cors'], function(){
 		});
 
 		Route::group(['prefix' => 'users', 'as' => 'users.'], function(){
-			Route::get('find-by-token/{social}/{token}',['as' => 'find-by-token',   'uses' => 'Api\UsersController@findByToken']);
+			Route::get('find-local-by-token/{social}/{token}',  ['as' => 'find-local-by-token',    'uses' => 'Api\UsersController@findLocalByToken']);
+			Route::get('find-social-by-token/{social}/{token}', ['as' => 'find-social-by-token',   'uses' => 'Api\UsersController@findSocialByToken']);
 			Route::get('authenticated', 				['as' => 'authenticated', 	'uses' => 'Api\UsersController@authenticated']);
 			Route::patch('device-token', 				['as' => 'device-token', 	'uses' => 'Api\UsersController@updateDeviceToken']);
 			Route::post('/', 							['as' => 'create', 			'uses' => 'Api\UsersController@create']);

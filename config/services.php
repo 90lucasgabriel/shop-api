@@ -37,8 +37,7 @@ return [
 
     'facebook' => [
         'client_id' => '1855427244735293',
-        'client_secret' => 'a901cb18435cc98be2d5c70334494c3a',
-        'redirect' => 'http://your-callback-url',
+        'client_secret' => 'a901cb18435cc98be2d5c70334494c3a'
     ],
 
 ];
