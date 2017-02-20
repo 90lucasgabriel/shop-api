@@ -70,7 +70,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         
     }
 
-    public function findSocialByToken(){
+    public function findSocialByToken($social, $token){
         $user = Socialite::driver($social)->userFromToken($token);
 
         if($user){

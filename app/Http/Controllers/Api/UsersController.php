@@ -96,9 +96,12 @@ class UsersController extends Controller{
         return $this->userRepository->updateDeviceToken($id, $deviceToken);
     }
 
-    public function findByToken($social, $token){
+    public function findLocalByToken($social, $token){
         //dd((md5('facebook90lucasgabriel@gmail.comSecretPasswordSocial!')));
-        return $this->userRepository->skipPresenter(false)->findByToken($social, $token);
+        return $this->userRepository->skipPresenter(false)->findLocalByToken($social, $token);
     }
 
+    public function findSocialByToken($social, $token){
+        return $this->userRepository->skipPresenter(false)->findSocialByToken($social, $token);
+    }
 }
