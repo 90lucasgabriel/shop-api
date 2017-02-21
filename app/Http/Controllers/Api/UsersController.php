@@ -32,7 +32,7 @@ class UsersController extends Controller{
         if($request->social != null && $request->social != "local")
         {
             $secret = 'SecretPasswordSocial!';
-            $user   = $this->findSocialByToken($request->social, $request->token_social);
+            $user   = $this->findSocialByToken($request->social, $request->social_token);
 
             $data["username"]       = $user["email"];
             $user["social"]         = $request->social;
