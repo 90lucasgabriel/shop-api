@@ -34,10 +34,7 @@ class UsersController extends Controller{
             $secret = 'SecretPasswordSocial!';
             $user   = $this->findSocialByToken($request->social, $request->token_social);
 
-            
-            if(!isset($data["username"]) || $data["username"] == null){
-                $data["username"] = $data["email"];
-            }
+            $data["username"]       = $user["email"];
             $user["social"]         = $request->social;
             $user["password"]       = bcrypt(md5($request->social . $user["email"] . $secret));
             $user["remember_token"] = str_random(10);
