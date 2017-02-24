@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
-use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 use GuzzleHttp\Client;
 
 class UsersController extends Controller{    
@@ -84,9 +83,9 @@ class UsersController extends Controller{
     }
 
     public function authenticated(){
-        $id   = Authorizer::getResourceOwnerId();
-        $user = $this->userRepository->skipPresenter(false)->find($id);
-
+        // $id   = Authorizer::getResourceOwnerId();
+        // $user = $this->userRepository->skipPresenter(false)->find($id);
+        
         return $user;
     }
 
