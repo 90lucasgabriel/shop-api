@@ -85,7 +85,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
                 "register"     => true
             ];
 
-            //$data = ["data" => $data];
+            $data = ["data" => $data];
 
             return $data;
         }
