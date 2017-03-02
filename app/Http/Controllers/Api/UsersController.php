@@ -32,6 +32,7 @@ class UsersController extends Controller{
         {
             $secret = 'SecretPasswordSocial!';
             $user   = $this->findSocialByToken($request->social, $request->social_token);
+            $user   = $user["data"];
 
             $data["username"]       = $user["email"];
             $data["picture"]        = $user["picture"];
