@@ -34,6 +34,7 @@ class UsersController extends Controller{
             $user   = $this->findSocialByToken($request->social, $request->social_token);
 
             $data["username"]       = $user["email"];
+            $data["picture"]        = $user["picture"];
             $user["social"]         = $request->social;
             $user["password"]       = bcrypt(md5($request->social . $user["email"] . $secret));
             $user["remember_token"] = str_random(10);
@@ -85,7 +86,7 @@ class UsersController extends Controller{
     public function authenticated(){
         // $id   = Authorizer::getResourceOwnerId();
         // $user = $this->userRepository->skipPresenter(false)->find($id);
-        
+
         return $user;
     }
 
